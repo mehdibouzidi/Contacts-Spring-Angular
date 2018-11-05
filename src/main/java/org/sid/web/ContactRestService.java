@@ -29,11 +29,11 @@ public class ContactRestService {
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public Page<Contact> search(
-            @RequestParam(name="nom", defaultValue = "") String nom,
+            @RequestParam(name="nom",  defaultValue = "") String nom,
             @RequestParam(name="page", defaultValue = "0") int page,
             @RequestParam(name="size", defaultValue = "5") int size
     ){
-        return contactRepository.findByName("%"+nom+"%", new PageRequest(page, size));
+        return contactRepository.findByName("%"+nom+"%", PageRequest.of(page, size));
     }
 
     @RequestMapping(value = "/contacts", method = RequestMethod.POST)
