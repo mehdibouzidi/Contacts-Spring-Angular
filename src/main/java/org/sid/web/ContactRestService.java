@@ -42,14 +42,17 @@ public class ContactRestService {
     }
 
     @RequestMapping(value = "/contact/{id}", method = RequestMethod.DELETE)
-    public void deleteContact(@PathVariable Integer id){
+    public boolean deleteContact(@PathVariable Integer id){
+        System.out.println("DELETE: "+ id);
         contactRepository.deleteById(id);
+        return true;
     }
 
 
-    @RequestMapping(value = "/contacts", method = RequestMethod.PUT)
+    @RequestMapping(value = "/contacts/{id}", method = RequestMethod.PUT)
     public Contact saveContact(@PathVariable Integer id, @RequestBody Contact contact){
         contact.setId(id);
+        System.out.println("CONTACT PUT: "+contact.getNom());
         return contactRepository.save(contact);
     }
 
