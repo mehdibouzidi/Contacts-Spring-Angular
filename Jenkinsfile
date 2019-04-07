@@ -4,6 +4,6 @@ node{
   }
   stage('Maven Package'){
     def mavenHome = tool name: 'M3', type: 'maven'
-      sh "${mavenHome}/bin/mvn package"
+      sh """${mavenHome}/bin/mvn package"""
   }
 }
